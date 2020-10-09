@@ -1,6 +1,7 @@
 package ar.edu.undec.neutron.controller;
 
 import ar.edu.undec.neutron.dto.Response;
+import ar.edu.undec.neutron.modelo.Prestamoxlibro;
 import ar.edu.undec.neutron.service.PrestamoxlibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,9 @@ public class PrestamoxlibroController {
         Response response = prestamoxlibroService.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-   
+    @PostMapping("/realizarprestamoxlibro")
+    public ResponseEntity<Response> save(@RequestBody Prestamoxlibro prestamo){
+        Response response = prestamoxlibroService.save(prestamo);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
